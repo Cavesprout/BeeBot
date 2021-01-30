@@ -1,10 +1,14 @@
 import os
 from dotenv import load_dotenv
 
+load_dotenv()
+
 import discord
 from discord.ext import commands
 
 client = commands.Bot(command_prefix = '~')
+
+
 
 # Event Detection
 
@@ -28,10 +32,18 @@ async def buzz(ctx):
 
 @client.command()
 async def sting(ctx, member: discord.Member):
+    await ctx.send('command still in development')
 
 
 @client.command()
-async def pollenate(ctx, member : discord.Member):
-    await 
+async def pollenate(ctx):
+    PollenRole = discord.utils.get(ctx.guild.roles, name="Pollen")
+    await ctx.author.add_roles(PollenRole)
 
-client.run('TOKEN')
+@client.command()
+async def honey(ctx):
+    PollenRole = discord.utils.get(ctx.guild.roles, name="Pollen")
+    await ctx.author.remove_roles(PollenRole)
+    await ctx.send('You made honey! What a hard worker.')
+
+client.run(os.getenv("TOKEN"))
