@@ -43,7 +43,10 @@ async def pollenate(ctx):
 @client.command()
 async def honey(ctx):
     PollenRole = discord.utils.get(ctx.guild.roles, name="Pollen")
-    await ctx.author.remove_roles(PollenRole)
-    await ctx.send('You made honey! What a hard worker.')
+    if PollenRole in ctx.author.roles:
+        await ctx.author.remove_roles(PollenRole)
+        await ctx.send('You made honey! What a hard worker.')
+    else:
+        await ctx.send('Silly goose, you need pollen to make honey!')
 
 client.run(os.getenv("TOKEN"))
