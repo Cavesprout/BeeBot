@@ -1,3 +1,6 @@
+import os
+from dotenv import load_dotenv
+
 import discord
 from discord.ext import commands
 
@@ -24,7 +27,11 @@ async def buzz(ctx):
     await ctx.send(f'Buzz! ({round(client.latency * 1000)} ms)')
 
 @client.command()
+async def sting(ctx, member: discord.Member):
+
+
+@client.command()
 async def pollenate(ctx, member : discord.Member):
     await 
 
-client.run('ODA1MDc2ODIyMjAyNzc3Njcw.YBVoOA.8N5mY3M4Otlili-pS2Jy0xwFJlk')
+client.run('TOKEN')
