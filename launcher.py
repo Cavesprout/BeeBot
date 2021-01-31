@@ -1,6 +1,6 @@
 from lib.bot import bot
 
-VERSION = "0.1.1"
-VERSION_MESSAGE = "This version was supposed to contain a humor cog, but it was BEEyond stupid, so I cut it"
+VERSION = "0.1.2"
+VERSION_MESSAGE = "This version adds nothing, the command it added was too slow. Also Bug Fables is a really good game."
 
 bot.run(VERSION, VERSION_MESSAGE)
