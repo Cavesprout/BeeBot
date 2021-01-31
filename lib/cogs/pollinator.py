@@ -28,21 +28,32 @@ class Pollinator(Cog):
     @command()
     async def pollinate(self, ctx):
         PollenRole = discord.utils.get(ctx.guild.roles, name="Pollen")
-        if PollenRole in ctx.author.roles:
-            await ctx.send('Youre already holding as much pollen as you can carry!')
+        if PollenRole.name == "Pollen":
+            if PollenRole in ctx.author.roles:
+                await ctx.send("You're already holding as much pollen as you can carry!")
+            else:
+                await ctx.author.add_roles(PollenRole)
+                await ctx.send('You collected some pollen!')
         else:
-            await ctx.author.add_roles(PollenRole)
-            await ctx.send('You collected some pollen!')
+            await ctx.send('Pollen role does not exist, functionality to create it automatically is planned')
         
 
     @command()
     async def honey(self, ctx):
         PollenRole = discord.utils.get(ctx.guild.roles, name="Pollen")
-        if PollenRole in ctx.author.roles:
-            await ctx.author.remove_roles(PollenRole)
-            await ctx.send('You made honey! What a hard worker.')
+        if PollenRole.name == "Pollen":
+            if PollenRole in ctx.author.roles:
+                await ctx.author.remove_roles(PollenRole)
+                await ctx.send('You made honey! What a hard worker.')
+            else:
+                await ctx.send('Silly goose, you need pollen to make honey!')
         else:
-            await ctx.send('Silly goose, you need pollen to make honey!')
+            await ctx.send('Pollen role does not exist, functionality to create it automatically is planned')
+
+    @command()
+    async def CCD(self, ctx):
+        await ctx.send("You're the reason the bees are dying. You monster.")
+        await self.bot.logout()
 
 def setup(bot):
     bot.add_cog(Pollinator(bot))
